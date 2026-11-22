@@ -8,11 +8,8 @@ func main() {
 	todos := types.Todos{}
 	storage := NewStorage[types.Todos]("todos.json")
 	storage.Load(&todos)
-	todos.Add("buy dildo for aziz")
-	todos.Add("sleep with yassine")
-
-	todos.Toggle(0)
-	todos.Print()
+	cmdFlags := NewCmdFlags()
+	cmdFlags.Execute(&todos)
 	storage.Save(todos)
 
 }
